@@ -10,9 +10,9 @@ export const Home = () => {
 	return (
 		<div className="container ">
 			<div className="mt-3">
-				<Ernesto title="Planets" data={store.planets} type="planets" />
+				<Ernesto title="Planets" data={store.planets} />
 			</div>
-			<Ernesto title="Characters" data={store.characters} type="characters" />
+			<Ernesto title="Characters" data={store.characters} />
 		</div>
 	);
 };

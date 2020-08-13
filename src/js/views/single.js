@@ -2,6 +2,38 @@ import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { SingleCard } from "../component/singleCard";
+
+export const Single = props => {
+	const { store, actions, title } = useContext(Context);
+	return (
+		<div className="jumbotron">
+			<h1 className="display-4">This will show the Single element: {`${title}`}</h1>
+
+			<hr className="my-4" />
+
+			<div className="mt-3">
+				<SingleCard title="Planets" data={store.planets} />
+			</div>
+
+			<Link to="/">
+				<span className="btn btn-primary btn-lg" href="#" role="button">
+					Back home
+				</span>
+			</Link>
+		</div>
+	);
+};
+
+Single.propTypes = {
+	title: PropTypes.string
+};
+
+/*
+import React, { useState, useEffect, useContext } from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export const Single = props => {
 	const { store, actions } = useContext(Context);
@@ -23,3 +55,4 @@ export const Single = props => {
 Single.propTypes = {
 	match: PropTypes.object
 };
+*/

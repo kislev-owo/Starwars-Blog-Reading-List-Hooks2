@@ -41,7 +41,7 @@ const Layout = () => {
 							<Detail />
 						</Route>
 						<Route exact path="/:type/:index">
-							<div className="blue-box">AZUL!</div>
+							<Single />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
