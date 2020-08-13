@@ -1,8 +1,46 @@
-const baseUrl = "whatever.com/endpoint";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			demo: [
+			planets: [],
+			characters: [],
+			favorites: [],
+			todos: []
+		},
+
+		actions: {
+			addToFavorites: item => {
+				setStore({ favorites: getStore().favorites.concat(item) });
+			},
+			getPlanets: () => {
+				fetch("https://swapi.dev/api/planets/")
+					.then(res => res.json())
+					.then(data => setStore({ planets: data.results }));
+				/**
+					fetch(url).then(response).then(data => setStore({ "foo": data.bar }))
+				*/
+			},
+			getCharacters: () => {
+				fetch("https://swapi.dev/api/people/")
+					.then(res => res.json())
+					.then(data => setStore({ characters: data.results }));
+				/**
+					fetch().then().then(data => setStore({ "foo": data.bar }))
+				*/
+			}
+		}
+	};
+};
+
+export default getState;
+
+/*
+
+
+const getState = ({ getStore, getActions, setStore }) => {
+	return {
+		store: {
+
+            demo: [
 				{
 					title: "FIRST",
 					background: "white",
@@ -48,7 +86,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			addTask: newTask => {
 				const currentStore = getStore();
-				//llamo a la api, recibo los datos, actualizo el store
+				//llamo a la api, recibo los data, actualizo el store
 				setStore({
 					todos: [...currentStore.todos, newTask]
 				});
@@ -66,8 +104,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			loadSomeData: () => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
+				
+            },
+            
+            
 			changeColor: (index, color) => {
 				//get the store
 				const store = getStore();
@@ -87,3 +127,4 @@ const getState = ({ getStore, getActions, setStore }) => {
 };
 
 export default getState;
+*/
