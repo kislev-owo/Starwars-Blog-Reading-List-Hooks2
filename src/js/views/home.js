@@ -1,23 +1,18 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 import PropTypes from "prop-types";
 
 import { Context } from "../store/appContext";
 import { Ernesto } from "./Ernesto";
 
 export const Home = () => {
-	const [newTask, setNewTask] = useState("");
 	const { store, actions } = useContext(Context);
-	const history = useHistory();
 	return (
 		<div className="container ">
-			<div className="mt-5">
+			<div className="mt-3">
 				<Ernesto title="Planets" data={store.planets} type="planets" />
 			</div>
-			<div className="mt-5">
-				<Ernesto title="Characters" data={store.characters} type="characters" />
-			</div>
+			<Ernesto title="Characters" data={store.characters} type="characters" />
 		</div>
 	);
 };
