@@ -1,19 +1,20 @@
 import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { SingleCard } from "../component/singleCard";
 
 export const Single = props => {
-	const { store, actions, title } = useContext(Context);
+	const { store, actions } = useContext(Context);
+	const params = useParams(); // params.type, params.index
 	return (
 		<div className="jumbotron">
-			<h1 className="display-4">This will show the Single element: {`${title}`}</h1>
+			{/* <h1 className="display-4">This will show the Single element: {`${props.title}`}</h1> */}
 
 			<hr className="my-4" />
 
 			<div className="mt-3">
-				<SingleCard title="Planets" data={store.planets} />
+				<SingleCard title={params.type} idToRender={params.index} />
 			</div>
 
 			<Link to="/">

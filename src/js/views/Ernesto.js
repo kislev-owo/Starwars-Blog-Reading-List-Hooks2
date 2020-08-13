@@ -14,26 +14,24 @@ export const Ernesto = props => {
 			item.id = index;
 
 			return (
-				<>
-					<div key={index} className="col-5">
-						<div className="card">
-							<img src="https://via.placeholder.com/400x200" className="card-img-top" alt="..." />
+				<div key={index} className="col-5">
+					<div className="card">
+						<img src="https://via.placeholder.com/400x200" className="card-img-top" alt="..." />
 
-							<div className="card-body">
-								<h4 className="card-title">{item.name}</h4>
-							</div>
-							<ul className="list-group list-group-flush">
-								<li className="list-group-item">{item.climate || item.gender}</li>
-								<li className="list-group-item">{item.population || item.height}</li>
-								<li className="list-group-item">{item.terrain || item.birth_year}</li>
-							</ul>
-
-							<button className="btn btn-success" onClick={e => history.push(`/${title}/${item.id}`)}>
-								{"ver detalles"}
-							</button>
+						<div className="card-body">
+							<h4 className="card-title">{item.name}</h4>
 						</div>
+						<ul className="list-group list-group-flush">
+							<li className="list-group-item">{item.climate || item.gender}</li>
+							<li className="list-group-item">{item.population || item.height}</li>
+							<li className="list-group-item">{item.terrain || item.birth_year}</li>
+						</ul>
+
+						<button className="btn btn-success" onClick={e => history.push(`/${title}/${item.id}`)}>
+							{"ver detalles"}
+						</button>
 					</div>
-				</>
+				</div>
 			);
 		});
 	};
