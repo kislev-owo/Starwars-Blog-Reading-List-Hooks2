@@ -40,8 +40,8 @@ const Layout = () => {
 						<Route path="/ernesto/:personajeId">
 							<Detail />
 						</Route>
-						<Route exact path="/:type/:singleId">
-							<Detail />
+						<Route exact path="/:type/:index">
+							<div className="blue-box">AZUL!</div>
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
