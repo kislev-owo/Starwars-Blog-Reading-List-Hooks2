@@ -26,10 +26,14 @@ export const Ernesto = props => {
 							<li className="list-group-item">{item.population || item.height}</li>
 							<li className="list-group-item">{item.terrain || item.birth_year}</li>
 						</ul>
-
-						<button className="btn btn-success" onClick={e => history.push(`/${title}/${item.id}`)}>
-							{"ver detalles"}
-						</button>
+						<div className="card-body2">
+							<button className="btn btn-primary" onClick={e => history.push(`/${title}/${item.id}`)}>
+								{"ver detalles"}
+							</button>
+							<a href="#" className="card-link">
+								<i onClick={() => handleClick()} className={"fas fa-heart"} />
+							</a>
+						</div>
 					</div>
 				</div>
 			);

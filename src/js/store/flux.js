@@ -3,14 +3,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			planets: [],
 			characters: [],
-			favorites: [],
-			todos: []
+			favorites: []
 		},
 
 		actions: {
-			addToFavorites: item => {
-				setStore({ favorites: getStore().favorites.concat(item) });
-			},
 			getPlanets: () => {
 				fetch("https://swapi.dev/api/planets/")
 					.then(res => res.json())

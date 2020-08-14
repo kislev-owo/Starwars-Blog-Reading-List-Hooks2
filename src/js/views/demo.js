@@ -8,7 +8,7 @@ import "../../styles/demo.scss";
 export const Demo = () => {
 	const { store, actions } = useContext(Context);
 	const match = useRouteMatch();
-	console.log(`this is match: ${match.path}`);
+	//console.log(`this is match: ${match.path}`);
 	return (
 		<>
 			<div className="container">

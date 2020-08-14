@@ -9,10 +9,12 @@ export const Home = () => {
 	const { store, actions } = useContext(Context);
 	return (
 		<div className="container ">
-			<div className="mt-3">
+			<div className="mt-4">
 				<Ernesto title="Planets" data={store.planets} />
 			</div>
-			<Ernesto title="Characters" data={store.characters} />
+			<div className="mt-4">
+				<Ernesto title="Characters" data={store.characters} />
+			</div>
 		</div>
 	);
 };
