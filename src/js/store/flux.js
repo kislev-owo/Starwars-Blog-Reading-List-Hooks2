@@ -22,105 +22,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
-			}
-		}
-	};
-};
-
-export default getState;
-
-/*
-
-
-const getState = ({ getStore, getActions, setStore }) => {
-	return {
-		store: {
-
-            demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			],
-			todos: [],
-			personajes: [
-				{
-					id: 1,
-					name: "Pedro",
-					last_name: "Perez",
-					age: 34
-				},
-				{
-					id: 2,
-					name: "Emilio",
-					last_name: "Perez",
-					age: 57
-				},
-				{
-					id: 3,
-					name: "Rodrigo",
-					last_name: "Perez",
-					age: 16
-				}
-			]
-		},
-		actions: {
-			// Use getActions to call a function within a fuction
-			fetchGetTodos: async () => {
-				let response = await fetch(url);
-				if (reacngns) return todos;
 			},
-			getTodos: async () => {
-				const currentActions = getActions();
-				await currentActions.fetchGetTodos();
-			},
-			addTask: newTask => {
-				const currentStore = getStore();
-				//llamo a la api, recibo los data, actualizo el store
-				setStore({
-					todos: [...currentStore.todos, newTask]
-				});
-			},
-			removeTask: index => {
-				const currentStore = getStore();
-				const filteredList = currentStore.todos.filter((task, i) => index != i);
-				setStore({
-					todos: filteredList
-				});
-			},
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				
-            },
-            
-            
-			changeColor: (index, color) => {
-				//get the store
+
+			AddNewFavorite: (item, objType) => {
 				const store = getStore();
+				let found = store.favorites.find(element => element.stringToDisplay == item.name);
 
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
+				// Al agregar este bloque de código empieza a dar error el código con el condicional y las variables objeto
+				//if (found == undefined) {
+				//	let listEntry = {
+				//		stringToPush: `/${objType}/${item.name}`,
+				//		stringToDisplay: item.name
+				//	};
+				//	setStore({ favorites: [...store.favorites] });
+				//}
+			},
 
-				//reset the global store
-				setStore({ demo: demo });
+			DeleteFavorite: item => {
+				const store = getStore();
+				let filteredList = store.favorites.filter(current => name != current.stringToDisplay);
+				setStore({ favorites: filteredList });
 			}
 		}
 	};
 };
 
 export default getState;
-*/
