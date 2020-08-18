@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from "react";
 import { DropdownMenu, Dropdown } from "react-bootstrap";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 
 // Funcion Favorites con dropdwon list
 export const Favorites = props => {
-	const { title, data, type } = props;
+	const { type } = props;
 	const { store, actions } = useContext(Context);
 
 	let badgeNumber = 0;
@@ -25,13 +25,12 @@ export const Favorites = props => {
 
 				<Dropdown.Menu>
 					<>
-						{store.favorites.map((title, index) => {
+						{store.favorites.map((type, index) => {
 							return (
 								<div className="d-flex justify-content-between align-items-center" key={index}>
 									<Dropdown.Item href="#/1" className="">
-										<Link to={store.favorites}>{`${title}`}</Link>
+										<Link to={store.favorites}>{`${type}`}</Link>
 									</Dropdown.Item>
-
 									<i
 										className="fa fa-trash"
 										aria-hidden="true"
@@ -41,7 +40,6 @@ export const Favorites = props => {
 									/>
 								</div>
 							);
-							console.log(`${title} este se agrega al favoritos`);
 						})}
 					</>
 				</Dropdown.Menu>
@@ -52,7 +50,6 @@ export const Favorites = props => {
 
 Favorites.propTypes = {
 	title: PropTypes.string,
-	data: PropTypes.array,
 	type: PropTypes.string
 };
 

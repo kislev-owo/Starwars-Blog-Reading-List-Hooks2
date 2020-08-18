@@ -3,6 +3,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			planets: [],
 			characters: [],
+			vehicles: [],
 			favorites: []
 		},
 
@@ -19,6 +20,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch("https://swapi.dev/api/people/")
 					.then(res => res.json())
 					.then(data => setStore({ characters: data.results }));
+				/**
+					fetch().then().then(data => setStore({ "foo": data.bar }))
+				*/
+			},
+			getVehicles: () => {
+				fetch("https://swapi.dev/api/vehicles/")
+					.then(res => res.json())
+					.then(data => setStore({ vehicles: data.results }));
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/

@@ -22,20 +22,22 @@ export const Ernesto = props => {
 							<h4 className="card-title">{item.name}</h4>
 						</div>
 						<ul className="list-group list-group-flush">
-							<li className="list-group-item">{item.climate || item.gender}</li>
-							<li className="list-group-item">{item.population || item.height}</li>
-							<li className="list-group-item">{item.terrain || item.birth_year}</li>
+							<li className="list-group-item">{item.climate || item.gender || item.model}</li>
+							<li className="list-group-item">{item.population || item.height || item.manufacturer}</li>
+							<li className="list-group-item">
+								{item.terrain || item.birth_year || item.cost_in_credits}
+							</li>
 						</ul>
 						<div className="card-body2">
 							<button className="btn btn-primary" onClick={e => history.push(`/${title}/${item.id}`)}>
-								{"ver detalles"}
+								{"Ver detalles"}
 							</button>
 							<a href="#" className="card-link">
 								<i
 									className={"fas fa-heart"}
 									onClick={event => {
 										console.log(`${item.name} se añadio a favoritos`);
-										actions.AddNewFavorite(item.name, `${title}`);
+										actions.AddNewFavorite(item.name, `${type}`);
 										console.log(store.favorites);
 									}}
 								/>

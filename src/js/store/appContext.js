@@ -33,6 +33,7 @@ const injectContext = PassedComponent => {
 			 **/
 			state.actions.getPlanets();
 			state.actions.getCharacters();
+			state.actions.getVehicles();
 			state.actions.AddNewFavorite();
 		}, []);
 

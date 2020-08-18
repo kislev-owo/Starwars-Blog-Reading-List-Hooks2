@@ -15,6 +15,9 @@ export const Home = () => {
 			<div className="mt-4">
 				<Ernesto title="Characters" data={store.characters} />
 			</div>
+			<div className="mt-4">
+				<Ernesto title="Vehicles" data={store.vehicles} />
+			</div>
 		</div>
 	);
 };
