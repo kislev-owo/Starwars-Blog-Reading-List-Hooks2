@@ -38,21 +38,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ favorites: filteredList });
 			},
 
-			AddNewFavorite: item => {
-				setStore({ favorites: getStore().favorites.concat(item) });
-
-				//		AddNewFavorite: (item, objType) => {
-				//			const store = getStore();
-				//			let found = store.favorites.find(element => e//lement.stringToDisplay == item.name);
-
-				// Al agregar este bloque de código empieza a dar error el código con el condicional y las variables objeto
-				//if (found == undefined) {
-				//	let listEntry = {
-				//		stringToPush: `/${objType}/${item.name}`,
-				//		stringToDisplay: item.name
-				//	};
-				//	setStore({ favorites: [...store.favorites] });
-				//}
+			AddNewFavorite: (item, title) => {
+				console.log("getting here");
+				setStore({
+					favorites: getStore().favorites.concat({
+						name: item.name,
+						url: `/${title}/${item.id}`
+					})
+				});
 			}
 		}
 	};

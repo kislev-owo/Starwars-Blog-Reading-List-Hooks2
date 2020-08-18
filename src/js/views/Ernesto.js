@@ -4,8 +4,7 @@ import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const Ernesto = props => {
-	const { title, data, type } = props;
+export const Ernesto = ({ title, data }) => {
 	const history = useHistory();
 	const { store, actions } = useContext(Context);
 
@@ -32,13 +31,12 @@ export const Ernesto = props => {
 							<button className="btn btn-primary" onClick={e => history.push(`/${title}/${item.id}`)}>
 								{"Ver detalles"}
 							</button>
-							<a href="#" className="card-link">
+							<a className="">
 								<i
-									className={"fas fa-heart"}
+									className={"card-link fas fa-heart"}
 									onClick={event => {
 										console.log(`${item.name} se añadio a favoritos`);
-										actions.AddNewFavorite(item.name, `${type}`);
-										console.log(store.favorites);
+										actions.AddNewFavorite(item, title);
 									}}
 								/>
 							</a>
@@ -58,8 +56,7 @@ export const Ernesto = props => {
 
 Ernesto.propTypes = {
 	title: PropTypes.string,
-	data: PropTypes.array,
-	type: PropTypes.string
+	data: PropTypes.array
 };
 
 /*

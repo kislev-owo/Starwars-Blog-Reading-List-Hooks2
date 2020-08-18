@@ -1,15 +1,14 @@
 import React, { useState, useEffect, useContext } from "react";
 import { DropdownMenu, Dropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 
 // Funcion Favorites con dropdwon list
 export const Favorites = props => {
-	const { type } = props;
 	const { store, actions } = useContext(Context);
-
-	let badgeNumber = 0;
+	const history = useHistory();
+	// let badgeNumber = 0;
 	//let name = item.id;
 	// En el contador Donde esta badgeNumber debería ir {favorites.length}, que es la longitud del arreglo.
 	console.log(store.favorites);
@@ -20,12 +19,30 @@ export const Favorites = props => {
 			<Dropdown>
 				<Dropdown.Toggle variant="primary" id="dropdown-basic">
 					Favorites
-					<span className="badge badge-light">{badgeNumber}</span>
+					<span className="badge badge-light">{store.favorites.length}</span>
 				</Dropdown.Toggle>
 
 				<Dropdown.Menu>
 					<>
-						{store.favorites.map((type, index) => {
+						{store.favorites.map((favorite, index) => {
+							return (
+								<Dropdown.Item
+									className="d-flex justify-content-between align-items-center"
+									key={index}
+									as="div"
+									onClick={e => history.push(favorite.url)}>
+									{favorite.name}
+									<i
+										className="fa fa-trash ml-auto"
+										aria-hidden="true"
+										onClick={event => {
+											actions.DeleteFavorite(index);
+										}}
+									/>
+								</Dropdown.Item>
+							);
+						})}
+						{/* {store.favorites.map((type, index) => {
 							return (
 								<div className="d-flex justify-content-between align-items-center" key={index}>
 									<Dropdown.Item href="#/1" className="">
@@ -40,7 +57,7 @@ export const Favorites = props => {
 									/>
 								</div>
 							);
-						})}
+						})} */}
 					</>
 				</Dropdown.Menu>
 			</Dropdown>
@@ -48,9 +65,6 @@ export const Favorites = props => {
 	);
 };
 
-Favorites.propTypes = {
-	title: PropTypes.string,
-	type: PropTypes.string
-};
+Favorites.propTypes = {};
 
 //    {favorites.map((item, index) => {}}
