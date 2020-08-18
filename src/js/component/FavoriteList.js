@@ -5,15 +5,16 @@ import { Context } from "../store/appContext";
 import PropTypes from "prop-types";
 
 // Funcion Favorites con dropdwon list
-export const Favorites = () => {
-	const history = useHistory();
+export const Favorites = props => {
+	const { title, data, type } = props;
 	const { store, actions } = useContext(Context);
 
-	let badgeNumber = null;
+	let badgeNumber = 0;
 	//let name = item.id;
 	// En el contador Donde esta badgeNumber debería ir {favorites.length}, que es la longitud del arreglo.
 	console.log(store.favorites);
 	console.log(`${store.favorites} se lee`);
+
 	return (
 		<div className="ml-auto">
 			<Dropdown>
@@ -24,12 +25,11 @@ export const Favorites = () => {
 
 				<Dropdown.Menu>
 					<>
-						{store.favorites.map((item, index) => {
+						{store.favorites.map((title, index) => {
 							return (
 								<div className="d-flex justify-content-between align-items-center" key={index}>
 									<Dropdown.Item href="#/1" className="">
-										{/*	<Link to={item.name}>{store.favorites}</Link>*/}
-										<h1>algo</h1>
+										<Link to={store.favorites}>{`${title}`}</Link>
 									</Dropdown.Item>
 
 									<i
@@ -41,12 +41,19 @@ export const Favorites = () => {
 									/>
 								</div>
 							);
+							console.log(`${title} este se agrega al favoritos`);
 						})}
 					</>
 				</Dropdown.Menu>
 			</Dropdown>
 		</div>
 	);
+};
+
+Favorites.propTypes = {
+	title: PropTypes.string,
+	data: PropTypes.array,
+	type: PropTypes.string
 };
 
 //    {favorites.map((item, index) => {}}
