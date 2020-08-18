@@ -23,10 +23,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					fetch().then().then(data => setStore({ "foo": data.bar }))
 				*/
 			},
-
-			AddNewFavorite: (item, objType) => {
+			DeleteFavorite: item => {
 				const store = getStore();
-				let found = store.favorites.find(element => element.stringToDisplay == item.name);
+				let filteredList = store.favorites.filter(current => current != store.favorites[item]);
+				setStore({ favorites: filteredList });
+			},
+
+			AddNewFavorite: item => {
+				setStore({ favorites: getStore().favorites.concat(item) });
+
+				//		AddNewFavorite: (item, objType) => {
+				//			const store = getStore();
+				//			let found = store.favorites.find(element => e//lement.stringToDisplay == item.name);
 
 				// Al agregar este bloque de código empieza a dar error el código con el condicional y las variables objeto
 				//if (found == undefined) {
@@ -36,12 +44,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//	};
 				//	setStore({ favorites: [...store.favorites] });
 				//}
-			},
-
-			DeleteFavorite: item => {
-				const store = getStore();
-				let filteredList = store.favorites.filter(current => name != current.stringToDisplay);
-				setStore({ favorites: filteredList });
 			}
 		}
 	};

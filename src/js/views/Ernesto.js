@@ -33,9 +33,9 @@ export const Ernesto = props => {
 							<a href="#" className="card-link">
 								<i
 									className={"fas fa-heart"}
-									onClick={e => {
-										console.log(`${item.name} added to favorites`);
-										actions.AddNewFavorite(item, `${title}`);
+									onClick={event => {
+										console.log(`${item.name} se añadio a favoritos`);
+										actions.AddNewFavorite(item.name, `${title}`);
 										console.log(store.favorites);
 									}}
 								/>
