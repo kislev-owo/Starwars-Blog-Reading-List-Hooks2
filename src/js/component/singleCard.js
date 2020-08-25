@@ -44,6 +44,7 @@ export const SingleCard = ({ title, idToRender, data }) => {
 										</div>
 									</div>
 								</div>
+								<hr />
 								<div className="row more-info">
 									<div className="col">
 										<h3>Name</h3>
