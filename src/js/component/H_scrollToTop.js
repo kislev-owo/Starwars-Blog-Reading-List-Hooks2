@@ -18,3 +18,5 @@ ScrollToTop.propTypes = {
 	location: PropTypes.object,
 	children: PropTypes.any
 };
+
+//usa this aun tengo que estudiar this pero lo q hace es subir al tope de la pagina

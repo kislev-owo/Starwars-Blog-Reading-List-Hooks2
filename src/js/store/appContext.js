@@ -20,6 +20,7 @@ const injectContext = PassedComponent => {
 					})
 			})
 		);
+		// arriba inicializamos a los estados hooks donde utilizamos a get para conseguir los datos de cada arreglo
 
 		useEffect(() => {
 			/**
@@ -34,7 +35,7 @@ const injectContext = PassedComponent => {
 			state.actions.getPlanets();
 			state.actions.getCharacters();
 			state.actions.getVehicles();
-			// state.actions.AddNewFavorite();
+			// aqui inicializamos al hook useEffect para que nos de la informacion proveniente de la api
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,
@@ -45,6 +46,7 @@ const injectContext = PassedComponent => {
 				<PassedComponent {...props} />
 			</Context.Provider>
 		);
+		// esto ni idea ya estaba aqui
 	};
 	return StoreWrapper;
 };

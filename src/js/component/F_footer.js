@@ -7,3 +7,4 @@ export const Footer = () => (
 		</p>
 	</footer>
 );
+// un div con un corazon.

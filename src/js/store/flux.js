@@ -6,6 +6,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			vehicles: [],
 			favorites: []
 		},
+		//cargamos la informacion de getStore y la guardamos en store en cada arreglo vacio de nuestro estado
 
 		actions: {
 			getPlanets: () => {
@@ -13,7 +14,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(res => res.json())
 					.then(data => setStore({ planets: data.results }));
 				/**
-					fetch(url).then(response).then(data => setStore({ "foo": data.bar }))
+				aqui hacemos get a la api y lo guardamos en data.results q son el array planets de arriba
 				*/
 			},
 			getCharacters: () => {
@@ -21,7 +22,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(res => res.json())
 					.then(data => setStore({ characters: data.results }));
 				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
+				aqui hacemos get a la api y lo guardamos en data.results q son el array characters de arriba
 				*/
 			},
 			getVehicles: () => {
@@ -29,13 +30,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(res => res.json())
 					.then(data => setStore({ vehicles: data.results }));
 				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
+				aqui hacemos get a la api y lo guardamos en data.results q son el array vehicles de arriba
 				*/
 			},
 			DeleteFavorite: item => {
 				const store = getStore();
 				let filteredList = store.favorites.filter(current => current != store.favorites[item]);
 				setStore({ favorites: filteredList });
+				/**
+				deleteamos a item haciendo filter de store.favorites luego favorites actualiza a la lista filtrada
+				*/
 			},
 
 			AddNewFavorite: (item, title) => {
@@ -44,6 +48,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					favorites: getStore().favorites.concat({
 						name: item.name,
 						url: `/${title}/${item.id}`
+
+						/**
+				en la funcion addNewFavorite concatenamos a el item.name y damos la direccion url del mismo
+				*/
 					})
 				});
 			}
